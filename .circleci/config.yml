@@ -7,10 +7,10 @@ jobs:
       - checkout
       - run:
           name: Restore solution
-          command: dotnet restore
+          command: dotnet restore CircleCITest/
       - run:
           name: Build solution
-          command: dotnet build
+          command: dotnet build CircleCITest/
       - run:
           name: Run tests 
-          command: dotnet test --no-build --logger "trx;LogFileName=../../../xunit-output.xml" CircleCITest
+          command: dotnet test --no-build --logger "trx;LogFileName=../../../xunit-output.xml" CircleCITest/CircleCITest
