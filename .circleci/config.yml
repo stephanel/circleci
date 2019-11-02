@@ -1,10 +1,16 @@
-version: 2.0
+version: 2
 jobs:
- build:
-   docker:
+  build:
+    docker:
       - image: microsoft/aspnetcore-build:2.0
-   steps:
-     - checkout
-     - run: dotnet restore
-     - run: dotnet build
-     - run: dotnet test --no-build CircleCITest
+    steps:
+      - checkout
+      - run:
+          name: Restore solution
+          command: dotnet restore
+      - run:
+          name: Build solution
+          command: dotnet build
+      - run:
+          name: Run tests 
+          command: dotnet test --no-build --logger "trx;LogFileName=../../../xunit-output.xml" CircleCITest
