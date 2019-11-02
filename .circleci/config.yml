@@ -5,19 +5,6 @@ jobs:
       - image: mcr.mcrosoft.com/dotnet/core/sdk:2.2
    steps:
      - checkout
-     - run:
-       name: Restore packages
-       command:
-         dotnet restore
-     - run:
-       name: Build App
-       command:
-         dotnet build
-     - run:
-       name: Run Tests
-       command:
-         dotnet test
-     - run:
-       name: Run App
-       command:
-         dotnet run
+     - run: dotnet restore
+     - run: dotnet build
+     - run: dotnet test --no-build CircleCITest
